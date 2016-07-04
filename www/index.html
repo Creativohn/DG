@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'self' 'unsafe-inline' 'unsafe-eval'; script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Drogueria Guardado.</title>
+</head>
+
+<body>
+    <div id="content" style="height: auto; width: auto; overflow: auto; -webkit-overflow-scrolling:touch;">
+        <iframe src="http://movilpop.planetaapp.com/dvendedor" id="framepage" scrolling="no" width="100%" frameborder="0"> iframe content here </iframe>
+
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+
+        $(document).ready(function(){
+            ancho = $(window).width();
+            alto = $(window).height();
+
+            //$('<iframe src="http://movilpop.planetaapp.com/dvendedor" height="100%" width="100%" frameborder="0"></iframe>').appendTo('body');
+
+            $('#framepage').width(ancho);
+            $('#framepage').height(alto);
+        });
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            var ref = window.open('https://fbspps.planetaapp.com/dv/', '_blank', 'location=yes');
+            ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+            ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+            ref.addEventListener('exit', function() { alert(event.type); });
+        }
+    </script>
+</body>
+
+</html>
